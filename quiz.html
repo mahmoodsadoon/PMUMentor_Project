@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PMU Mentors Quiz</title>
+  <title>PMU Mentors - Quiz</title>
   <style>
     body {
       margin: 0;
@@ -38,11 +38,6 @@
       z-index: 10;
     }
 
-    header img {
-      width: 20px;
-      margin-right: 10px;
-    }
-
     header h1 {
       font-size: 1.2em;
     }
@@ -61,9 +56,11 @@
       font-size: 1.2em;
     }
 
-    .quiz p {
-      margin-bottom: 15px;
-      font-size: 1.1em;
+    .quiz .progress {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 0.9em;
+      color: #ccc;
     }
 
     .options {
@@ -78,26 +75,41 @@
       border-radius: 5px;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    .options label {
-      flex-grow: 1;
+    .options li:hover {
+      background: #4a4a4a;
     }
 
     .options input {
       margin-left: 10px;
     }
 
-    .btn-next {
-      width: 100%;
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 48%;
       padding: 10px;
       border: none;
       border-radius: 5px;
       font-size: 1em;
+      cursor: pointer;
+    }
+
+    .btn-next {
       background: #ff3b3b;
       color: white;
-      cursor: pointer;
-      margin-top: 20px;
+    }
+
+    .btn-review {
+      background: white;
+      color: #1c1c1c;
     }
 
     footer {
@@ -119,49 +131,40 @@
 </head>
 <body>
   <header>
-    <img src="https://via.placeholder.com/20" alt="Logo">
     <h1>PMU Mentors</h1>
   </header>
 
   <div class="container">
     <div class="quiz">
+      <div class="progress">Question 1 of 5</div>
       <h2>Mini Quiz on Computer Science 1</h2>
       <p>1. What is the default value of a boolean variable in Java?</p>
       <ul class="options">
         <li>
-          <label>
-            <input type="radio" name="question" value="true">
-            a) true
-          </label>
+          <input type="radio" name="question" value="true">
+          a) true
         </li>
         <li>
-          <label>
-            <input type="radio" name="question" value="false">
-            b) false
-          </label>
+          <input type="radio" name="question" value="false">
+          b) false
         </li>
         <li>
-          <label>
-            <input type="radio" name="question" value="zero">
-            c) zero
-          </label>
+          <input type="radio" name="question" value="zero">
+          c) zero
         </li>
         <li>
-          <label>
-            <input type="radio" name="question" value="null">
-            d) null
-          </label>
+          <input type="radio" name="question" value="null">
+          d) null
         </li>
       </ul>
-      <button class="btn-next">Next</button>
+      <div class="btn-container">
+        <button class="btn btn-review">Review Later</button>
+        <button class="btn btn-next">Next</button>
+      </div>
     </div>
   </div>
 
   <footer>
     <div class="icon">🏠</div>
     <div class="icon">👥</div>
-    <div class="icon">📖</div>
-    <div class="icon">👤</div>
-  </footer>
-</body>
-</html>
+   
