@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMU Mentors Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    header {
+      background-color: #2d2d2d;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    header img {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 1.2em;
+    }
+
+    .quiz {
+      background: #2d2d2d;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 80px 0 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .quiz h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    .quiz p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options li {
+      margin: 10px 0;
+      background: #3d3d3d;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .options label {
+      flex-grow: 1;
+    }
+
+    .options input {
+      margin-left: 10px;
+    }
+
+    .btn-next {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      background: #ff3b3b;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-around;
+      background: #2d2d2d;
+      padding: 10px;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+    }
+
+    footer .icon {
+      font-size: 1.5em;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://via.placeholder.com/20" alt="Logo">
+    <h1>PMU Mentors</h1>
+  </header>
+
+  <div class="container">
+    <div class="quiz">
+      <h2>Mini Quiz on Computer Science 1</h2>
+      <p>1. What is the default value of a boolean variable in Java?</p>
+      <ul class="options">
+        <li>
+          <label>
+            <input type="radio" name="question" value="true">
+            a) true
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="question" value="false">
+            b) false
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="question" value="zero">
+            c) zero
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="question" value="null">
+            d) null
+          </label>
+        </li>
+      </ul>
+      <button class="btn-next">Next</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="icon">🏠</div>
+    <div class="icon">👥</div>
+    <div class="icon">📖</div>
+    <div class="icon">👤</div>
+  </footer>
+</body>
+</html>
