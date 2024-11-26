@@ -15,6 +15,11 @@
       align-items: center;
     }
 
+    body.light-mode {
+      background-color: #f5f5f5;
+      color: black;
+    }
+
     .container {
       width: 90%;
       max-width: 400px;
@@ -29,12 +34,24 @@
       font-size: 1.5em;
     }
 
+    .toggle-mode {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
     .section {
       background: #2d2d2d;
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .section.light-mode {
+      background: #ffffff;
     }
 
     .section h2 {
@@ -50,6 +67,11 @@
       background: #3d3d3d;
       color: white;
       font-size: 1em;
+    }
+
+    input.light-mode {
+      background: #f0f0f0;
+      color: black;
     }
 
     .btn {
@@ -81,14 +103,18 @@
       background: #e03636;
     }
 
-    .checkbox {
-      display: flex;
-      align-items: center;
+    .progress {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .progress span {
       font-size: 0.9em;
     }
 
-    .checkbox input {
-      margin-right: 10px;
+    .error {
+      color: #ff3b3b;
+      font-size: 0.8em;
     }
 
     footer {
@@ -109,6 +135,7 @@
   </style>
 </head>
 <body>
+  <div class="toggle-mode" onclick="toggleMode()">🌙</div>
   <header>
     <h1>PMU Mentors</h1>
   </header>
@@ -117,23 +144,26 @@
     <!-- Login Section -->
     <div class="section">
       <h2>Welcome Back</h2>
-      <input type="email" placeholder="📧 Email">
-      <input type="password" placeholder="🔒 Password">
-      <div class="checkbox">
-        <input type="checkbox" id="remember">
-        <label for="remember">Remember Me</label>
-      </div>
-      <button class="btn btn-login">Login</button>
+      <input type="email" id="login-email" placeholder="📧 Email">
+      <div class="error" id="login-email-error"></div>
+      <input type="password" id="login-password" placeholder="🔒 Password">
+      <div class="error" id="login-password-error"></div>
+      <button class="btn btn-login" onclick="validateLogin()">Login</button>
     </div>
 
     <!-- Register Section -->
     <div class="section">
       <h2>Create Account</h2>
-      <input type="text" placeholder="👤 Full Name">
-      <input type="email" placeholder="📧 Email">
-      <input type="password" placeholder="🔒 Password">
-      <input type="password" placeholder="🔒 Confirm Password">
-      <button class="btn btn-register">Register</button>
+      <div class="progress"><span>Step 1 of 2</span></div>
+      <input type="text" id="register-name" placeholder="👤 Full Name">
+      <div class="error" id="register-name-error"></div>
+      <input type="email" id="register-email" placeholder="📧 Email">
+      <div class="error" id="register-email-error"></div>
+      <input type="password" id="register-password" placeholder="🔒 Password">
+      <div class="error" id="register-password-error"></div>
+      <input type="password" id="register-confirm-password" placeholder="🔒 Confirm Password">
+      <div class="error" id="register-confirm-password-error"></div>
+      <button class="btn btn-register" onclick="validateRegister()">Register</button>
     </div>
   </div>
 
@@ -142,5 +172,36 @@
     <div class="icon">📄</div>
     <div class="icon">👤</div>
   </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+      const sections = document.querySelectorAll(".section");
+      const inputs = document.querySelectorAll("input");
+      sections.forEach((section) => section.classList.toggle("light-mode"));
+      inputs.forEach((input) => input.classList.toggle("light-mode"));
+    }
+
+    function validateLogin() {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      document.getElementById("login-email-error").textContent = email === "" ? "Email cannot be empty" : "";
+      document.getElementById("login-password-error").textContent = password === "" ? "Password cannot be empty" : "";
+    }
+
+    function validateRegister() {
+      const name = document.getElementById("register-name").value;
+      const email = document.getElementById("register-email").value;
+      const password = document.getElementById("register-password").value;
+      const confirmPassword = document.getElementById("register-confirm-password").value;
+
+      document.getElementById("register-name-error").textContent = name === "" ? "Name cannot be empty" : "";
+      document.getElementById("register-email-error").textContent = email === "" ? "Email cannot be empty" : "";
+      document.getElementById("register-password-error").textContent = password === "" ? "Password cannot be empty" : "";
+      document.getElementById("register-confirm-password-error").textContent =
+        confirmPassword !== password ? "Passwords do not match" : "";
+    }
+  </script>
 </body>
 </html>
